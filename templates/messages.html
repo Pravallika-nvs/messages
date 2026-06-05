@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages</title>
+
+
+
+    <link
+
+        rel="stylesheet"
+
+        href="/static/style.css">
+
+</head>
+
+
+
+<body>
+
+
+
+<div class="container">
+
+
+
+    <h1>📬 Secret Messages</h1>
+
+
+
+    {% for message in messages %}
+
+
+
+        <div class="message">
+
+            <p>{{ message[1] }}</p>
+
+
+
+            <small>{{ message[2] }}</small>
+
+            <a href="/delete/{{ message[0] }}">
+
+            Delete
+
+            </a>
+
+            <hr>
+
+        </div>
+
+
+    {% endfor %}
+
+    
+
+</div>
+
+
+
+</body>
+
+</html>

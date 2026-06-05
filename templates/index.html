@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Share a Secret</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>🤫 Share a Secret</h1>
+
+    <p>
+        Share your thoughts anonymously.
+    </p>
+
+    <form
+    action="/submit"
+    method="post"
+    onsubmit="return validateForm()">
+
+        <textarea
+            id="message"
+            name="message"
+            rows="6"
+            maxlength="700"
+            placeholder="Type your secret here..."
+            required></textarea>
+        <p id="counter">0 / 700</p>
+        <p id="error-message"></p>
+
+        <button type="submit">
+            Share Secret
+        </button>
+
+    </form>
+
+</div>
+
+<script>
+const textarea = document.getElementById("message");
+const counter = document.getElementById("counter");
+const errorMessage = document.getElementById("error-message");
+
+textarea.addEventListener("input", () => {
+    counter.textContent =
+        textarea.value.length + " / 700";
+
+    errorMessage.textContent = "";
+});
+
+function validateForm() {
+    const message = textarea.value.trim();
+
+    if (message.length === 0) {
+        errorMessage.textContent =
+            "Message cannot be empty.";
+        return false;
+    }
+
+    return true;
+}
+</script>
+
+</body>
+</html>
